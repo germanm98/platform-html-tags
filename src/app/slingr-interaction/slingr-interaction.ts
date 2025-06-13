@@ -36,7 +36,7 @@ export class SlingrInteraction extends LitElement {
   recordId: string = "";
 
   @property({
-    attribute: "context",
+    attribute: "__context",
     converter: {
       fromAttribute: (value: string | null) => {
         if (!value) return {};
@@ -71,7 +71,6 @@ export class SlingrInteraction extends LitElement {
   buttonStyle: string = "default";
 
   manageClick() {
-    console.log("Context:", this.context);
     let myEvent = new CustomEvent("slingr-tag-interaction", {
       detail: {
         entity: this.entity,
