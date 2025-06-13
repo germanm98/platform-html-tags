@@ -36,6 +36,22 @@ export class SlingrInteraction extends LitElement {
   recordId: string = "";
 
   @property({
+    attribute: "__context",
+    converter: {
+      fromAttribute: (value: string | null) => {
+        if (!value) return {};
+        try {
+          return JSON.parse(value);
+        } catch (e) {
+          console.error("Error parsing __context:", value, e);
+          return {};
+        }
+      },
+    },
+  })
+  context: { [key: string]: string } = {};
+
+  @property({
     attribute: "record-ids",
     type: Array,
     converter: (recordIds: string | null) => {
