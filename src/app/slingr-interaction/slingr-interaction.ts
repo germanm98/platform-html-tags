@@ -36,14 +36,14 @@ export class SlingrInteraction extends LitElement {
   recordId: string = "";
 
   @property({
-    attribute: "__context",
+    attribute: "context",
     converter: {
       fromAttribute: (value: string | null) => {
         if (!value) return {};
         try {
           return JSON.parse(value);
         } catch (e) {
-          console.error("Error parsing __context:", value, e);
+          console.error("Error parsing context:", value, e);
           return {};
         }
       },
@@ -71,6 +71,7 @@ export class SlingrInteraction extends LitElement {
   buttonStyle: string = "default";
 
   manageClick() {
+    console.log("Context:", this.context);
     let myEvent = new CustomEvent("slingr-tag-interaction", {
       detail: {
         entity: this.entity,
