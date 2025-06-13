@@ -76,7 +76,8 @@ export class SlingrInteraction extends LitElement {
         entity: this.entity,
         interaction: this.interaction,
         recordIds: this.recordId ? [this.recordId] : this.recordIds,
-        defaultParams: this.defaultParams
+        defaultParams: this.defaultParams,
+        context: this.context
       },
       bubbles: true,
       composed: true,
